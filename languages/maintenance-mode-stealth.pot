@@ -1,0 +1,78 @@
+# TRANSLATIONS FOR MAINTENANCE MODE STEALTH.
+# Copyright (C) 2025 JOLIX AB
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <fredrik.gustavsson@jolix.se>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Maintenance Mode Stealth 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-01 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Maintenance Mode"
+msgstr ""
+
+msgid "Maintenance Mode Settings"
+msgstr ""
+
+msgid "Configure your maintenance mode settings below. Only administrators will be able to access the site when maintenance mode is enabled."
+msgstr ""
+
+msgid "Enable Maintenance Mode"
+msgstr ""
+
+msgid "Enable maintenance mode"
+msgstr ""
+
+msgid "When enabled, only logged-in administrators can access the site."
+msgstr ""
+
+msgid "Maintenance Page HTML"
+msgstr ""
+
+msgid "Enter the complete HTML code for your maintenance page. This will be displayed exactly as entered."
+msgstr ""
+
+msgid "Tailwind CSS:"
+msgstr ""
+
+msgid "Include Tailwind CSS CDN in your HTML head to use utility classes."
+msgstr ""
+
+msgid "HTTP Status Code"
+msgstr ""
+
+msgid "Choose the HTTP status code to send with the maintenance page."
+msgstr ""
+
+msgid "Insert Basic HTML"
+msgstr ""
+
+msgid "Insert Tailwind Example"
+msgstr ""
+
+msgid "Clear"
+msgstr ""
+
+msgid "Maintenance Mode Stealth"
+msgstr ""
+
+msgid "WARNING:"
+msgstr ""
+
+msgid "Maintenance mode is currently ACTIVE. Your site is not accessible to visitors."
+msgstr ""
+
+msgid "You do not have permission to delete comments."
+msgstr ""
+
+msgid "You do not have permission to change comment settings."
+msgstr ""
