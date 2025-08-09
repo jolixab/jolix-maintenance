@@ -1,4 +1,4 @@
-# Maintenance Mode Stealth
+# Jolix Maintenance
 
 A simple and powerful WordPress maintenance mode plugin with custom HTML control and Tailwind CSS support.
 
@@ -15,7 +15,7 @@ A simple and powerful WordPress maintenance mode plugin with custom HTML control
 ## Installation
 
 1. Download the plugin files
-2. Upload to `/wp-content/plugins/maintenance-mode-stealth/`
+2. Upload to `/wp-content/plugins/jolix-maintenance/`
 3. Activate through WordPress admin
 4. Go to **Settings > Maintenance Mode**
 
@@ -65,11 +65,11 @@ GPL v3 License - see LICENSE file for details.
 
 ## Support
 
-For support and feature requests, please visit https://jolix.se/en/maintenance-model-stealth-wp-plugin/.
+For support and feature requests, please visit https://jolix.se/en/jolix-maintenance-wp-plugin/.
 
 ---
 
 **Author**: Jolix AB  
-**Website**: https://jolix.se/en/maintenance-model-stealth-wp-plugin/  
+**Website**: https://jolix.se/en/jolix-maintenance-wp-plugin/  
 **Version**: 1.0.0
 

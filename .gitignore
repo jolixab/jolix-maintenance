@@ -1,0 +1,7 @@
+CLAUDE.md
+.vscode/
+.idea/
+build.sh
+build/
+*.zip
+.DS_Store
