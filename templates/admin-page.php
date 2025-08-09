@@ -11,11 +11,11 @@ if (!defined('ABSPATH')) {
 }
 ?>
 <div class="wrap">
-    <h1><?php esc_html_e('Jolix Maintenance Mode', 'jolix-maintenance-mode'); ?></h1>
+    <h1><?php esc_html_e('Jolix Maintenance Mode', 'jolix-maintenance'); ?></h1>
     
     <?php if ($enabled): ?>
         <div class="notice notice-warning">
-            <p><strong><?php esc_html_e('WARNING:', 'jolix-maintenance-mode'); ?></strong> <?php esc_html_e('Maintenance mode is currently ACTIVE. Your site is not accessible to visitors.', 'jolix-maintenance-mode'); ?></p>
+            <p><strong><?php esc_html_e('WARNING:', 'jolix-maintenance'); ?></strong> <?php esc_html_e('Maintenance mode is currently ACTIVE. Your site is not accessible to visitors.', 'jolix-maintenance'); ?></p>
         </div>
     <?php endif; ?>
     

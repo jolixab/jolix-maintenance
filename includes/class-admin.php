@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 class Jolix_Maintenance_Admin {
     
     private $option_name = 'jm_settings';
-    private $plugin_name = 'jolix-maintenance-mode';
+    private $plugin_name = 'jolix-maintenance';
     
     public function __construct() {
         add_action('admin_menu', array($this, 'add_admin_menu'));
@@ -23,10 +23,10 @@ class Jolix_Maintenance_Admin {
     
     public function add_admin_menu() {
         add_options_page(
-            __('Maintenance Mode', 'jolix-maintenance-mode'),
-            __('Maintenance Mode', 'jolix-maintenance-mode'),
+            __('Maintenance Mode', 'jolix-maintenance'),
+            __('Maintenance Mode', 'jolix-maintenance'),
             'manage_options',
-            'jolix-maintenance-mode',
+            'jolix-maintenance',
             array($this, 'admin_page')
         );
     }
@@ -36,14 +36,14 @@ class Jolix_Maintenance_Admin {
         
         add_settings_section(
             'jm_main_section',
-            __('Maintenance Mode Settings', 'jolix-maintenance-mode'),
+            __('Maintenance Mode Settings', 'jolix-maintenance'),
             array($this, 'section_callback'),
             $this->option_name
         );
         
         add_settings_field(
             'enabled',
-            __('Enable Maintenance Mode', 'jolix-maintenance-mode'),
+            __('Enable Maintenance Mode', 'jolix-maintenance'),
             array($this, 'enabled_callback'),
             $this->option_name,
             'jm_main_section'
@@ -51,7 +51,7 @@ class Jolix_Maintenance_Admin {
         
         add_settings_field(
             'tailwind_cdn',
-            __('Tailwind CSS CDN URL', 'jolix-maintenance-mode'),
+            __('Tailwind CSS CDN URL', 'jolix-maintenance'),
             array($this, 'tailwind_cdn_callback'),
             $this->option_name,
             'jm_main_section'
@@ -59,7 +59,7 @@ class Jolix_Maintenance_Admin {
         
         add_settings_field(
             'html_content',
-            __('Maintenance Page HTML', 'jolix-maintenance-mode'),
+            __('Maintenance Page HTML', 'jolix-maintenance'),
             array($this, 'html_content_callback'),
             $this->option_name,
             'jm_main_section'
@@ -67,7 +67,7 @@ class Jolix_Maintenance_Admin {
         
         add_settings_field(
             'status_code',
-            __('HTTP Status Code', 'jolix-maintenance-mode'),
+            __('HTTP Status Code', 'jolix-maintenance'),
             array($this, 'status_code_callback'),
             $this->option_name,
             'jm_main_section'
@@ -75,12 +75,12 @@ class Jolix_Maintenance_Admin {
     }
     
     public function enqueue_admin_scripts($hook) {
-        if ('settings_page_jolix-maintenance-mode' !== $hook) {
+        if ('settings_page_jolix-maintenance' !== $hook) {
             return;
         }
         
         wp_enqueue_script(
-            'jolix-maintenance-mode-admin',
+            'jolix-maintenance-admin',
             plugin_dir_url(__FILE__) . '../assets/js/admin.js',
             array(),
             '1.1',
@@ -88,12 +88,12 @@ class Jolix_Maintenance_Admin {
         );
         
         // Pass plugin URL to JavaScript
-        wp_localize_script('jolix-maintenance-mode-admin', 'jolixMaintenanceModeAdmin', array(
+        wp_localize_script('jolix-maintenance-admin', 'jolixMaintenanceAdmin', array(
             'pluginUrl' => plugin_dir_url(__FILE__) . '../'
         ));
         
         wp_enqueue_style(
-            'jolix-maintenance-mode-admin',
+            'jolix-maintenance-admin',
             plugin_dir_url(__FILE__) . '../assets/css/admin.css',
             array(),
             '1.1'
@@ -101,15 +101,15 @@ class Jolix_Maintenance_Admin {
     }
     
     public function section_callback() {
-        echo '<p>' . esc_html__('Configure your maintenance mode settings below. Only administrators will be able to access the site when maintenance mode is enabled.', 'jolix-maintenance-mode') . '</p>';
+        echo '<p>' . esc_html__('Configure your maintenance mode settings below. Only administrators will be able to access the site when maintenance mode is enabled.', 'jolix-maintenance') . '</p>';
     }
     
     public function enabled_callback() {
         $options = get_option($this->option_name);
         $enabled = isset($options['enabled']) ? $options['enabled'] : false;
         echo '<input type="checkbox" id="enabled" name="' . esc_attr($this->option_name) . '[enabled]" value="1" ' . checked(1, $enabled, false) . ' />';
-        echo '<label for="enabled">' . esc_html__('Enable maintenance mode', 'jolix-maintenance-mode') . '</label>';
-        echo '<p class="description">' . esc_html__('When enabled, only logged-in administrators can access the site.', 'jolix-maintenance-mode') . '</p>';
+        echo '<label for="enabled">' . esc_html__('Enable maintenance mode', 'jolix-maintenance') . '</label>';
+        echo '<p class="description">' . esc_html__('When enabled, only logged-in administrators can access the site.', 'jolix-maintenance') . '</p>';
     }
     
     public function tailwind_cdn_callback() {
@@ -117,8 +117,8 @@ class Jolix_Maintenance_Admin {
         $tailwind_cdn = isset($options['tailwind_cdn']) ? $options['tailwind_cdn'] : 'https://cdn.tailwindcss.com';
         
         echo '<input type="url" id="tailwind_cdn" name="' . esc_attr($this->option_name) . '[tailwind_cdn]" value="' . esc_attr($tailwind_cdn) . '" style="width: 100%;" />';
-        echo '<p class="description">' . esc_html__('Enter the Tailwind CSS CDN URL to use in your templates. Leave empty to not include Tailwind CSS.', 'jolix-maintenance-mode') . '</p>';
-        echo '<p class="description"><strong>' . esc_html__('Default:', 'jolix-maintenance-mode') . '</strong> https://cdn.tailwindcss.com</p>';
+        echo '<p class="description">' . esc_html__('Enter the Tailwind CSS CDN URL to use in your templates. Leave empty to not include Tailwind CSS.', 'jolix-maintenance') . '</p>';
+        echo '<p class="description"><strong>' . esc_html__('Default:', 'jolix-maintenance') . '</strong> https://cdn.tailwindcss.com</p>';
     }
     
     public function html_content_callback() {
@@ -128,16 +128,16 @@ class Jolix_Maintenance_Admin {
         
         echo '<div class="jm-editor-wrap">';
         echo '<div class="jm-toolbar">';
-        echo '<button type="button" class="button" onclick="insertBasicTemplate()">' . esc_html__('Insert Basic HTML', 'jolix-maintenance-mode') . '</button>';
-        echo '<button type="button" class="button" onclick="insertTailwindTemplate()">' . esc_html__('Insert Tailwind Example', 'jolix-maintenance-mode') . '</button>';
-        echo '<button type="button" class="button button-secondary" onclick="clearContent()">' . esc_html__('Clear', 'jolix-maintenance-mode') . '</button>';
+        echo '<button type="button" class="button" onclick="insertBasicTemplate()">' . esc_html__('Insert Basic HTML', 'jolix-maintenance') . '</button>';
+        echo '<button type="button" class="button" onclick="insertTailwindTemplate()">' . esc_html__('Insert Tailwind Example', 'jolix-maintenance') . '</button>';
+        echo '<button type="button" class="button button-secondary" onclick="clearContent()">' . esc_html__('Clear', 'jolix-maintenance') . '</button>';
         echo '</div>';
         
         echo '<textarea id="html_content" name="' . esc_attr($this->option_name) . '[html_content]" rows="25" style="width: 100%; font-family: \'Courier New\', monospace; font-size: 13px;">' . esc_textarea($html_content) . '</textarea>';
         echo '</div>';
         
-        echo '<p class="description">' . esc_html__('Enter the complete HTML code for your maintenance page. This will be displayed exactly as entered.', 'jolix-maintenance-mode') . '</p>';
-        echo '<p class="description"><strong>' . esc_html__('Note:', 'jolix-maintenance-mode') . '</strong> ' . esc_html__('Include complete HTML structure with &lt;html&gt;, &lt;head&gt;, and &lt;body&gt; tags.', 'jolix-maintenance-mode') . '</p>';
+        echo '<p class="description">' . esc_html__('Enter the complete HTML code for your maintenance page. This will be displayed exactly as entered.', 'jolix-maintenance') . '</p>';
+        echo '<p class="description"><strong>' . esc_html__('Note:', 'jolix-maintenance') . '</strong> ' . esc_html__('Include complete HTML structure with &lt;html&gt;, &lt;head&gt;, and &lt;body&gt; tags.', 'jolix-maintenance') . '</p>';
     }
     
     public function status_code_callback() {
@@ -149,7 +149,7 @@ class Jolix_Maintenance_Admin {
         echo '<option value="503"' . selected('503', $status_code, false) . '>503 - Service Unavailable</option>';
         echo '<option value="302"' . selected('302', $status_code, false) . '>302 - Found (Temporary Redirect)</option>';
         echo '</select>';
-        echo '<p class="description">' . esc_html__('Choose the HTTP status code to send with the maintenance page.', 'jolix-maintenance-mode') . '</p>';
+        echo '<p class="description">' . esc_html__('Choose the HTTP status code to send with the maintenance page.', 'jolix-maintenance') . '</p>';
     }
     
     public function sanitize_settings($input) {

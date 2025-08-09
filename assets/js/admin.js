@@ -3,7 +3,13 @@
  */
 
 function insertBasicTemplate() {
-    fetch(jolixMaintenanceModeAdmin.pluginUrl + 'templates/basic.html')
+    var currentContent = document.getElementById('html_content').value.trim();
+    
+    if (currentContent !== '' && !confirm('This will overwrite your current content. Are you sure you want to continue?')) {
+        return;
+    }
+    
+    fetch(jolixMaintenanceAdmin.pluginUrl + 'templates/basic.html')
         .then(response => response.text())
         .then(template => {
             document.getElementById('html_content').value = template;
@@ -29,7 +35,13 @@ function insertBasicTemplate() {
 }
 
 function insertTailwindTemplate() {
-    fetch(jolixMaintenanceModeAdmin.pluginUrl + 'templates/tailwind.html')
+    var currentContent = document.getElementById('html_content').value.trim();
+    
+    if (currentContent !== '' && !confirm('This will overwrite your current content. Are you sure you want to continue?')) {
+        return;
+    }
+    
+    fetch(jolixMaintenanceAdmin.pluginUrl + 'templates/tailwind.html')
         .then(response => response.text())
         .then(template => {
             document.getElementById('html_content').value = template;

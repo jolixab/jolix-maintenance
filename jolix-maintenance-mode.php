@@ -6,7 +6,7 @@
  * Version: 1.1
  * Author: Fredrik Gustavsson, Jolix AB
  * License: GPLv3
- * Text Domain: jolix-maintenance-mode
+ * Text Domain: jolix-maintenance
  * Domain Path: /languages
  * Requires at least: 5.0
  * Tested up to: 6.8
