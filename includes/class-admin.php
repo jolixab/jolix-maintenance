@@ -83,12 +83,12 @@ class Jolix_Maintenance_Admin {
             'jolix-maintenance-mode-admin',
             plugin_dir_url(__FILE__) . '../assets/js/admin.js',
             array(),
-            '1.0.0',
+            '1.1',
             true
         );
         
         // Pass plugin URL to JavaScript
-        wp_localize_script('jolix-maintenance-mode-admin', 'jolixMaintenanceAdmin', array(
+        wp_localize_script('jolix-maintenance-mode-admin', 'jolixMaintenanceModeAdmin', array(
             'pluginUrl' => plugin_dir_url(__FILE__) . '../'
         ));
         
@@ -96,7 +96,7 @@ class Jolix_Maintenance_Admin {
             'jolix-maintenance-mode-admin',
             plugin_dir_url(__FILE__) . '../assets/css/admin.css',
             array(),
-            '1.0.0'
+            '1.1'
         );
     }
     

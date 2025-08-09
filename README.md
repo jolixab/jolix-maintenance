@@ -1,4 +1,4 @@
-# Jolix Maintenance
+# Jolix Maintenance Mode
 
 A simple and powerful WordPress maintenance mode plugin with custom HTML control and Tailwind CSS support.
 
@@ -15,7 +15,7 @@ A simple and powerful WordPress maintenance mode plugin with custom HTML control
 ## Installation
 
 1. Download the plugin files
-2. Upload to `/wp-content/plugins/jolix-maintenance/`
+2. Upload to `/wp-content/plugins/jolix-maintenance-mode/`
 3. Activate through WordPress admin
 4. Go to **Settings > Maintenance Mode**
 
@@ -30,10 +30,13 @@ A simple and powerful WordPress maintenance mode plugin with custom HTML control
 ## Templates
 
 ### Basic HTML Template
+
 Simple HTML structure for basic maintenance pages.
 
 ### Tailwind CSS Template
+
 Modern, responsive design using Tailwind CSS with:
+
 - Gradient backgrounds
 - Glassmorphism effects
 - Responsive typography
@@ -42,6 +45,7 @@ Modern, responsive design using Tailwind CSS with:
 ## Customization
 
 The plugin gives you complete HTML control. You can:
+
 - Use any CSS framework (Tailwind, Bootstrap, etc.)
 - Add custom JavaScript
 - Include external resources
@@ -65,11 +69,10 @@ GPL v3 License - see LICENSE file for details.
 
 ## Support
 
-For support and feature requests, please visit https://jolix.se/en/jolix-maintenance-wp-plugin/.
+For support and feature requests, please visit <https://jolix.se/en/jolix-maintenance-mode-wp-plugin/>.
 
 ---
 
 **Author**: Jolix AB  
-**Website**: https://jolix.se/en/jolix-maintenance-wp-plugin/  
-**Version**: 1.0.0
-
+**Website**: <https://jolix.se/en/jolix-maintenance-mode-wp-plugin/>  
+**Version**: 1.1

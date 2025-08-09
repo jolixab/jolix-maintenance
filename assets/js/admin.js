@@ -1,9 +1,9 @@
 /**
- * Admin JavaScript for Jolix Maintenance
+ * Admin JavaScript for Jolix Maintenance Mode
  */
 
 function insertBasicTemplate() {
-    fetch(jolixMaintenanceAdmin.pluginUrl + 'templates/basic.html')
+    fetch(jolixMaintenanceModeAdmin.pluginUrl + 'templates/basic.html')
         .then(response => response.text())
         .then(template => {
             document.getElementById('html_content').value = template;
@@ -29,7 +29,7 @@ function insertBasicTemplate() {
 }
 
 function insertTailwindTemplate() {
-    fetch(jolixMaintenanceAdmin.pluginUrl + 'templates/tailwind.html')
+    fetch(jolixMaintenanceModeAdmin.pluginUrl + 'templates/tailwind.html')
         .then(response => response.text())
         .then(template => {
             document.getElementById('html_content').value = template;

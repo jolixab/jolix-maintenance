@@ -81,7 +81,8 @@ class Jolix_Maintenance_Handler {
         
         // Output the HTML content directly - this is intentionally not escaped 
         // as it's meant to output raw HTML for the maintenance page
-        echo wp_kses_post($html_content);
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        echo $html_content;
         
         // Stop WordPress processing
         exit;

@@ -58,19 +58,9 @@ class JolixMaintenance {
     }
     
     private function init() {
-        add_action('init', array($this, 'load_textdomain'));
-        
         // Register activation/deactivation hooks
         register_activation_hook(self::PLUGIN_FILE, array($this, 'activate'));
         register_deactivation_hook(self::PLUGIN_FILE, array($this, 'deactivate'));
-    }
-    
-    public function load_textdomain() {
-        load_plugin_textdomain(
-            'jolix-maintenance-mode',
-            false,
-            dirname(plugin_basename(self::PLUGIN_FILE)) . '/languages/'
-        );
     }
     
     public function activate() {
