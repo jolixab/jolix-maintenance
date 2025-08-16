@@ -5,6 +5,8 @@
  * This template is loaded by the admin class to display the settings page
  */
 
+namespace jolixab\JolixMaintenance;
+
 // Prevent direct access
 if (!defined('ABSPATH')) {
     exit;
@@ -29,11 +31,11 @@ if (!defined('ABSPATH')) {
 </div>
 
 <style>
-.jm-editor-wrap {
+.jolixabmm-editor-wrap {
     margin: 10px 0;
 }
 
-.jm-toolbar {
+.jolixabmm-toolbar {
     margin-bottom: 10px;
     padding: 10px;
     background: #f8f9fa;
@@ -41,7 +43,7 @@ if (!defined('ABSPATH')) {
     border-radius: 4px;
 }
 
-.jm-toolbar .button {
+.jolixabmm-toolbar .button {
     margin-right: 10px;
 }
 

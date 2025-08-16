@@ -2,14 +2,14 @@
  * Admin JavaScript for Jolix Maintenance Mode
  */
 
-function insertBasicTemplate() {
+function jolixabmm_insertBasicTemplate() {
     var currentContent = document.getElementById('html_content').value.trim();
     
     if (currentContent !== '' && !confirm('This will overwrite your current content. Are you sure you want to continue?')) {
         return;
     }
     
-    fetch(jolixMaintenanceAdmin.pluginUrl + 'templates/basic.html')
+    fetch(jolixabmmAdmin.pluginUrl + 'templates/basic.html')
         .then(response => response.text())
         .then(template => {
             document.getElementById('html_content').value = template;
@@ -34,14 +34,14 @@ function insertBasicTemplate() {
         });
 }
 
-function insertTailwindTemplate() {
+function jolixabmm_insertTailwindTemplate() {
     var currentContent = document.getElementById('html_content').value.trim();
     
     if (currentContent !== '' && !confirm('This will overwrite your current content. Are you sure you want to continue?')) {
         return;
     }
     
-    fetch(jolixMaintenanceAdmin.pluginUrl + 'templates/tailwind.html')
+    fetch(jolixabmmAdmin.pluginUrl + 'templates/tailwind.html')
         .then(response => response.text())
         .then(template => {
             document.getElementById('html_content').value = template;
@@ -93,7 +93,7 @@ function insertTailwindTemplate() {
         });
 }
 
-function clearContent() {
+function jolixabmm_clearContent() {
     if (confirm('Are you sure you want to clear all content?')) {
         document.getElementById('html_content').value = '';
     }

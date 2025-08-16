@@ -5,6 +5,8 @@
  * Handles loading of all plugin classes and initialization
  */
 
+namespace jolixab\JolixMaintenance;
+
 // Prevent direct access
 if (!defined('ABSPATH')) {
     exit;
@@ -31,12 +33,12 @@ class Jolix_Maintenance_Loader {
         $includes_path = plugin_dir_path(__FILE__);
         
         // Load core classes
-        $this->load_class('Jolix_Maintenance_Templates', $includes_path . 'class-templates.php');
-        $this->load_class('Jolix_Maintenance_Handler', $includes_path . 'class-maintenance.php');
+        $this->load_class('jolixab\\JolixMaintenance\\Jolix_Maintenance_Templates', $includes_path . 'class-templates.php');
+        $this->load_class('jolixab\\JolixMaintenance\\Jolix_Maintenance_Handler', $includes_path . 'class-maintenance.php');
         
         // Load admin classes only in admin
         if (is_admin()) {
-            $this->load_class('Jolix_Maintenance_Admin', $includes_path . 'class-admin.php');
+            $this->load_class('jolixab\\JolixMaintenance\\Jolix_Maintenance_Admin', $includes_path . 'class-admin.php');
         }
     }
     
@@ -49,12 +51,12 @@ class Jolix_Maintenance_Loader {
     
     private function init_hooks() {
         // Initialize maintenance handler
-        if (class_exists('Jolix_Maintenance_Handler')) {
+        if (class_exists('jolixab\\JolixMaintenance\\Jolix_Maintenance_Handler')) {
             new Jolix_Maintenance_Handler();
         }
         
         // Initialize admin interface only in admin
-        if (is_admin() && class_exists('Jolix_Maintenance_Admin')) {
+        if (is_admin() && class_exists('jolixab\\JolixMaintenance\\Jolix_Maintenance_Admin')) {
             new Jolix_Maintenance_Admin();
         }
     }

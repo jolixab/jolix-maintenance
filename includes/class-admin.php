@@ -5,6 +5,8 @@
  * Handles the WordPress admin settings page and form processing
  */
 
+namespace jolixab\JolixMaintenance;
+
 // Prevent direct access
 if (!defined('ABSPATH')) {
     exit;
@@ -12,7 +14,7 @@ if (!defined('ABSPATH')) {
 
 class Jolix_Maintenance_Admin {
     
-    private $option_name = 'jm_settings';
+    private $option_name = 'jolixabmm_settings';
     private $plugin_name = 'jolix-maintenance';
     
     public function __construct() {
@@ -26,7 +28,7 @@ class Jolix_Maintenance_Admin {
             __('Maintenance Mode', 'jolix-maintenance'),
             __('Maintenance Mode', 'jolix-maintenance'),
             'manage_options',
-            'jolix-maintenance',
+            'jolixabmm-maintenance',
             array($this, 'admin_page')
         );
     }
@@ -35,7 +37,7 @@ class Jolix_Maintenance_Admin {
         register_setting($this->option_name, $this->option_name, array($this, 'sanitize_settings'));
         
         add_settings_section(
-            'jm_main_section',
+            'jolixabmm_main_section',
             __('Maintenance Mode Settings', 'jolix-maintenance'),
             array($this, 'section_callback'),
             $this->option_name
@@ -46,7 +48,7 @@ class Jolix_Maintenance_Admin {
             __('Enable Maintenance Mode', 'jolix-maintenance'),
             array($this, 'enabled_callback'),
             $this->option_name,
-            'jm_main_section'
+            'jolixabmm_main_section'
         );
         
         add_settings_field(
@@ -54,7 +56,7 @@ class Jolix_Maintenance_Admin {
             __('Tailwind CSS CDN URL', 'jolix-maintenance'),
             array($this, 'tailwind_cdn_callback'),
             $this->option_name,
-            'jm_main_section'
+            'jolixabmm_main_section'
         );
         
         add_settings_field(
@@ -62,7 +64,7 @@ class Jolix_Maintenance_Admin {
             __('Maintenance Page HTML', 'jolix-maintenance'),
             array($this, 'html_content_callback'),
             $this->option_name,
-            'jm_main_section'
+            'jolixabmm_main_section'
         );
         
         add_settings_field(
@@ -70,17 +72,17 @@ class Jolix_Maintenance_Admin {
             __('HTTP Status Code', 'jolix-maintenance'),
             array($this, 'status_code_callback'),
             $this->option_name,
-            'jm_main_section'
+            'jolixabmm_main_section'
         );
     }
     
     public function enqueue_admin_scripts($hook) {
-        if ('settings_page_jolix-maintenance' !== $hook) {
+        if ('settings_page_jolixabmm-maintenance' !== $hook) {
             return;
         }
         
         wp_enqueue_script(
-            'jolix-maintenance-admin',
+            'jolixabmm-maintenance-admin',
             plugin_dir_url(__FILE__) . '../assets/js/admin.js',
             array(),
             '1.1',
@@ -88,12 +90,12 @@ class Jolix_Maintenance_Admin {
         );
         
         // Pass plugin URL to JavaScript
-        wp_localize_script('jolix-maintenance-admin', 'jolixMaintenanceAdmin', array(
+        wp_localize_script('jolixabmm-maintenance-admin', 'jolixabmmAdmin', array(
             'pluginUrl' => plugin_dir_url(__FILE__) . '../'
         ));
         
         wp_enqueue_style(
-            'jolix-maintenance-admin',
+            'jolixabmm-maintenance-admin',
             plugin_dir_url(__FILE__) . '../assets/css/admin.css',
             array(),
             '1.1'
@@ -126,11 +128,11 @@ class Jolix_Maintenance_Admin {
         $template_loader = new Jolix_Maintenance_Templates();
         $html_content = isset($options['html_content']) ? $options['html_content'] : $template_loader->get_default_template();
         
-        echo '<div class="jm-editor-wrap">';
-        echo '<div class="jm-toolbar">';
-        echo '<button type="button" class="button" onclick="insertBasicTemplate()">' . esc_html__('Insert Basic HTML', 'jolix-maintenance') . '</button>';
-        echo '<button type="button" class="button" onclick="insertTailwindTemplate()">' . esc_html__('Insert Tailwind Example', 'jolix-maintenance') . '</button>';
-        echo '<button type="button" class="button button-secondary" onclick="clearContent()">' . esc_html__('Clear', 'jolix-maintenance') . '</button>';
+        echo '<div class="jolixabmm-editor-wrap">';
+        echo '<div class="jolixabmm-toolbar">';
+        echo '<button type="button" class="button" onclick="jolixabmm_insertBasicTemplate()">' . esc_html__('Insert Basic HTML', 'jolix-maintenance') . '</button>';
+        echo '<button type="button" class="button" onclick="jolixabmm_insertTailwindTemplate()">' . esc_html__('Insert Tailwind Example', 'jolix-maintenance') . '</button>';
+        echo '<button type="button" class="button button-secondary" onclick="jolixabmm_clearContent()">' . esc_html__('Clear', 'jolix-maintenance') . '</button>';
         echo '</div>';
         
         echo '<textarea id="html_content" name="' . esc_attr($this->option_name) . '[html_content]" rows="25" style="width: 100%; font-family: \'Courier New\', monospace; font-size: 13px;">' . esc_textarea($html_content) . '</textarea>';

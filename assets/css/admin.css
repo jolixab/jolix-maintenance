@@ -2,11 +2,11 @@
  * Admin CSS for Jolix Maintenance Mode
  */
 
-.jm-editor-wrap {
+.jolixabmm-editor-wrap {
     margin: 10px 0;
 }
 
-.jm-toolbar {
+.jolixabmm-toolbar {
     margin-bottom: 10px;
     padding: 10px;
     background: #f8f9fa;
@@ -14,7 +14,7 @@
     border-radius: 4px;
 }
 
-.jm-toolbar .button {
+.jolixabmm-toolbar .button {
     margin-right: 10px;
 }
 
@@ -27,7 +27,7 @@
     line-height: 1.4;
 }
 
-.jm-notice {
+.jolixabmm-notice {
     margin: 5px 0 15px;
     background: #fff;
     border: 1px solid #c3c4c7;
@@ -36,14 +36,14 @@
     padding: 1px 12px;
 }
 
-.jm-notice.notice-warning {
+.jolixabmm-notice.notice-warning {
     border-left-color: #dba617;
 }
 
-.jm-notice.notice-error {
+.jolixabmm-notice.notice-error {
     border-left-color: #d63638;
 }
 
-.jm-notice.notice-success {
+.jolixabmm-notice.notice-success {
     border-left-color: #00a32a;
 }

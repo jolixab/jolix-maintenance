@@ -5,6 +5,8 @@
  * Manages and loads HTML templates for maintenance pages
  */
 
+namespace jolixab\JolixMaintenance;
+
 // Prevent direct access
 if (!defined('ABSPATH')) {
     exit;

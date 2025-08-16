@@ -5,6 +5,8 @@
  * Handles the frontend maintenance mode checking and display
  */
 
+namespace jolixab\JolixMaintenance;
+
 // Prevent direct access
 if (!defined('ABSPATH')) {
     exit;
@@ -12,7 +14,7 @@ if (!defined('ABSPATH')) {
 
 class Jolix_Maintenance_Handler {
     
-    private $option_name = 'jm_settings';
+    private $option_name = 'jolixabmm_settings';
     
     public function __construct() {
         add_action('template_redirect', array($this, 'maintenance_mode_check'));

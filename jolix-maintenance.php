@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Jolix Maintenance Mode
  * Plugin URI: https://jolix.se/en/jolix-maintenance-wp-plugin/
@@ -12,6 +13,7 @@
  * Tested up to: 6.8
  * Requires PHP: 7.4
  */
+namespace jolixab\JolixMaintenance;
 
 // Prevent direct access
 if (!defined('ABSPATH')) {
@@ -72,21 +74,21 @@ class JolixMaintenance {
             'status_code' => '503'
         );
         
-        add_option('jm_settings', $default_options);
+        add_option('jolixabmm_settings', $default_options);
     }
     
     public function deactivate() {
         // Disable maintenance mode when plugin is deactivated
-        $options = get_option('jm_settings');
+        $options = get_option('jolixabmm_settings');
         if ($options) {
             $options['enabled'] = false;
-            update_option('jm_settings', $options);
+            update_option('jolixabmm_settings', $options);
         }
     }
     
     public static function uninstall() {
         // Remove all plugin options
-        delete_option('jm_settings');
+        delete_option('jolixabmm_settings');
         
         // For multisite installations
         if (is_multisite()) {
@@ -97,7 +99,7 @@ class JolixMaintenance {
             
             foreach ($blog_ids as $blog_id) {
                 switch_to_blog($blog_id);
-                delete_option('jm_settings');
+                delete_option('jolixabmm_settings');
             }
             
             switch_to_blog($original_blog_id);
@@ -112,4 +114,4 @@ class JolixMaintenance {
 JolixMaintenance::get_instance();
 
 // Uninstall hook
-register_uninstall_hook(__FILE__, array('JolixMaintenance', 'uninstall'));
+register_uninstall_hook(__FILE__, array('jolixab\JolixMaintenance\JolixMaintenance', 'uninstall'));

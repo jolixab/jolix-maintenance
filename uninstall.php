@@ -1,10 +1,12 @@
 <?php
 /**
- * Uninstall script for Maintenance Mode Stealth
+ * Uninstall script for Jolix Maintenance Mode
  * 
  * This file is executed when the plugin is deleted via WordPress admin.
  * It cleans up all plugin data and options.
  */
+
+namespace jolixab\JolixMaintenance;
 
 // If uninstall not called from WordPress, exit
 if (!defined('WP_UNINSTALL_PLUGIN')) {
@@ -12,7 +14,7 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 }
 
 // Remove all plugin options
-delete_option('mms_settings');
+delete_option('jolixabmm_settings');
 
 // For multisite installations
 if (is_multisite()) {
@@ -23,7 +25,7 @@ if (is_multisite()) {
     
     foreach ($blog_ids as $blog_id) {
         switch_to_blog($blog_id);
-        delete_option('mms_settings');
+        delete_option('jolixabmm_settings');
     }
     
     switch_to_blog($original_blog_id);
@@ -31,4 +33,3 @@ if (is_multisite()) {
 
 // Clear any cached data
 wp_cache_flush();
-?>
